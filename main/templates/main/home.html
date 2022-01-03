@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>Home Page</h1>
+    
+    <h2>Products</h2>
+    <ul>
+        {% for item in items %}
+            <li>
+                {{item.name}}
+            </li>
+        {% endfor %}
+    </ul>
+    
+
+{% endblock %}
