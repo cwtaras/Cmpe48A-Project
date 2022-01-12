@@ -7,11 +7,11 @@ import requests
 
 SOURCE_TABLE = "cmpe48a-project.product_ds.products"
 
-if __name__ == '__main__':
+def show_basket():
     r = requests.get("https://us-central1-cmpe48a-project.cloudfunctions.net/show_basket",
                      headers={"key": "efebugra","user_name": "Bugra"})
     content = json.loads(r.content.decode("UTF-8"))
-    print(content)
+    return content
 
 
 

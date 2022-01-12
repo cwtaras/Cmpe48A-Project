@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>Payment</h1>
+
+<h2>PAYMENT SUCCESSFUL</h2>
+<h2>Shipping started</h2>
+<form action="/" method="post">
+    {% csrf_token %}
+    <button>GO TO HOME PAGE</button>
+</form>
+{% endblock %}

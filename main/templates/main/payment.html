@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>Payment</h1>
+
+<form method="post" action="" >
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" value="submit">PAY NOW</button>
+</form>
+<form action="/" method="post">
+    {% csrf_token %}
+    <button>GO TO HOME PAGE</button>
+</form>
+{% endblock %}

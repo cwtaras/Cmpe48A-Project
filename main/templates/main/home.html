@@ -4,13 +4,33 @@
     <h1>Home Page</h1>
     
     <h2>Products</h2>
-    <ul>
-        {% for item in items %}
-            <li>
-                {{item.name}}
-            </li>
-        {% endfor %}
-    </ul>
+    <table>
+        <th>Name</th>
+        <th>Count</th>
+        <th>Price</th>
+        <th></th>
+		{% for key, value in products.items %}
+			<tr> 
+            <form method="post" action=""> 
+            {% csrf_token %}
+            <td>{{key}}</td>
+            {% for key2, value2 in value.items %}
+            <td>{{value2}}</td>
+            {% endfor %}
+            <td><button type="submit" name="add" value={{key}}>Add Basket</button></td>
+            </form>
+            </tr>	
+		{% endfor %}
+    </table>
+    <br>
+    <br>
+    <form action="/cart" method="post">
+        {% csrf_token %}
+        <button>GO TO CART</button>
+    </form>
+
+
+    
     
 
 {% endblock %}

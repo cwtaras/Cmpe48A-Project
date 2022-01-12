@@ -1,5 +1,44 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-<h1>Cart</h1>
+    <h1>Cart</h1>
+    
+    <h2>Products</h2>
+    <table>
+        <th>Name</th>
+        
+        <th></th>
+        
+		{% for key, value in products.items %}
+            <form method="post" action=""> 
+            {% csrf_token %}
+            <tr>
+            <td>{{value}}</td>
+            <td><button type="submit" name="remove" value={{key}}>Remove From Cart</button></td>
+            </tr>
+            
+            </form>
+		{% endfor %}
+        
+        <tr>
+            <td>TOTAL PRICE</td>
+            <td>{{price}}</td>
+        </tr>
+        
+    </table>
+    <br>
+    <form action="/payment" method="post">
+        {% csrf_token %}
+        <button>PAY</button>
+    </form>
+    <br>
+    <form action="/" method="post">
+        {% csrf_token %}
+        <button>GO TO HOME PAGE</button>
+    </form>
+
+
+    
+    
+
 {% endblock %}
