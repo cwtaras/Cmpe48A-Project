@@ -1,15 +1,30 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
+<html>
+<head>
+<style>
+h1 {text-align: center;}
+form {text-align: center;}
+</style>
+</head>
+
 <h1>Payment</h1>
 
 <form method="post" action="" >
     {% csrf_token %}
     {{form.as_p}}
-    <button type="submit" value="submit">PAY NOW</button>
+    <br>
+    <button type="submit" value="submit" style="height:30px">PAY NOW</button>
 </form>
+<br>
+<form action="/cart" method="post">
+    {% csrf_token %}
+    <button style="height:30px">GO TO CART</button>
+</form>
+<br>
 <form action="/" method="post">
     {% csrf_token %}
-    <button>GO TO HOME PAGE</button>
+    <button style="height:30px">GO TO HOME PAGE</button>
 </form>
 {% endblock %}

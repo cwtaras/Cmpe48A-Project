@@ -8,6 +8,7 @@ from .helpers.show_basket_cloud_func import show_basket
 from .helpers.remove_product_from_basket import remove_basket
 from .helpers.total_price import get_total_price
 from .helpers.insert_to_basket_cloud_func import add_basket
+from .helpers.publish_pubsub import make_payment
 
 # Create your views here.
 
@@ -31,8 +32,12 @@ def payment(response):
     if response.method == "POST" or None:
         form = Card(response.POST or None)
         if form.is_valid():
-            
-            return HttpResponseRedirect("/shipment")
+            returned = make_payment()
+            if returned == "OK":
+                return HttpResponseRedirect("/shipment")
+            else:
+                form = Card()
+                return render(response, "main/payment.html", {"form":form})
         else:
             form = Card()
             return render(response, "main/payment.html", {"form":form})
